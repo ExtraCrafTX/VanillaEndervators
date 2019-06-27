@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "vanillaendervators",
+  "version": "0.0.1",
+
+  "name": "VanillaEndervators",
+  "description": "Adds server-side endervators that work with vanilla clients",
+  "authors": [
+    "ExtraCrafTX"
+  ],
+  "contact": {
+  },
+
+  "license": "CC BY-NC-SA 4.0",
+  "icon": "assets/vanillaendervators/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      
+    ]
+  },
+  "mixins": [
+    "vanillaendervators.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  }
+}
