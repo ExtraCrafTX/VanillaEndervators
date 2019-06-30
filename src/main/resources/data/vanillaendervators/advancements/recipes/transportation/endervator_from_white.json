@@ -1,0 +1,39 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "vanillaendervators:black_endervator_from_white",
+            "vanillaendervators:blue_endervator_from_white",
+            "vanillaendervators:brown_endervator_from_white",
+            "vanillaendervators:cyan_endervator_from_white",
+            "vanillaendervators:gray_endervator_from_white",
+            "vanillaendervators:green_endervator_from_white",
+            "vanillaendervators:light_blue_endervator_from_white",
+            "vanillaendervators:light_gray_endervator_from_white",
+            "vanillaendervators:lime_endervator_from_white",
+            "vanillaendervators:magenta_endervator_from_white",
+            "vanillaendervators:orange_endervator_from_white",
+            "vanillaendervators:pink_endervator_from_white",
+            "vanillaendervators:purple_endervator_from_white",
+            "vanillaendervators:red_endervator_from_white",
+            "vanillaendervators:yellow_endervator_from_white"
+        ]
+    },
+    "criteria": {
+        "has_white_endervator": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "vanillaendervators:white_endervator"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_white_endervator"
+        ]
+    ]
+}

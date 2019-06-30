@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "endervator_from_white",
+    "ingredients": [
+        {"item":"vanillaendervators:white_endervator"},
+        [{"item":"minecraft:purple_dye"}]
+    ],
+    "result": {
+        "item": "vanillaendervators:purple_endervator"
+    }
+}

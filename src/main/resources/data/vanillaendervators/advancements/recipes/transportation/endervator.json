@@ -1,0 +1,61 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "vanillaendervators:black_endervator",
+            "vanillaendervators:blue_endervator",
+            "vanillaendervators:brown_endervator",
+            "vanillaendervators:cyan_endervator",
+            "vanillaendervators:gray_endervator",
+            "vanillaendervators:green_endervator",
+            "vanillaendervators:light_blue_endervator",
+            "vanillaendervators:light_gray_endervator",
+            "vanillaendervators:lime_endervator",
+            "vanillaendervators:magenta_endervator",
+            "vanillaendervators:orange_endervator",
+            "vanillaendervators:pink_endervator",
+            "vanillaendervators:purple_endervator",
+            "vanillaendervators:red_endervator",
+            "vanillaendervators:white_endervator",
+            "vanillaendervators:yellow_endervator"
+        ]
+    },
+    "criteria": {
+        "has_ender_pearl": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:ender_pearl"
+                    }
+                ]
+            }
+        },
+        "has_wool": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "tag": "wool"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "vanillaendervators:white_endervator"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_ender_pearl",
+            "has_the_recipe"
+        ],
+        [
+            "has_wool",
+            "has_the_recipe"
+        ]
+    ]
+}

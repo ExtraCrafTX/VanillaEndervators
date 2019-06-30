@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "endervator",
+    "pattern": [
+        "WPW",
+        "PPP",
+        "WPW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:light_gray_wool"
+        },
+        "P": {
+            "item": "minecraft:ender_pearl"
+        }
+    },
+    "result": {
+        "item": "vanillaendervators:light_gray_endervator",
+        "count": 2
+    }
+}
