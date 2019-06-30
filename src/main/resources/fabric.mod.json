@@ -17,7 +17,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      
+      "com.extracraftx.minecraft.vanillaendervators.VanillaEndervators"
     ]
   },
   "mixins": [
@@ -26,6 +26,7 @@
 
   "depends": {
     "fabricloader": ">=0.4.0",
-    "fabric": "*"
+    "fabric": "*",
+    "serveradditionsutil": "*"
   }
 }
