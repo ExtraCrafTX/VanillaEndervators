@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.extracraftx.minecraft.serveradditionsutil.block.ServerSideBlock;
 import com.extracraftx.minecraft.serveradditionsutil.item.ServerSideBlockItem;
+import com.extracraftx.minecraft.vanillaendervators.config.Config;
 import com.extracraftx.minecraft.vanillaendervators.interfaces.ActionListenerBlock;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
@@ -37,50 +38,62 @@ public class EndervatorBlock extends ServerSideBlock implements ActionListenerBl
 
     @Override
     public boolean onJump(BlockPos pos, PlayerEntity player) {
-        if (player.isSprinting())
+        if (!Config.INSTANCE.teleportWhileSprinting && player.isSprinting())
             return false;
         pos = pos.up();
         ServerWorld world = (ServerWorld) player.world;
-        while (pos.getY() < 256) {
+        int count = 0;
+        while (count < Config.INSTANCE.maxRange && pos.getY() < 256) {
             Block b = world.getBlockState(pos).getBlock();
             if (b instanceof EndervatorBlock) {
                 EndervatorBlock block = (EndervatorBlock) b;
-                if (block.materialColor == this.materialColor) {
+                if (!Config.INSTANCE.sameColourOnly || block.materialColor == this.materialColor) {
                     Vec3d position = player.getPos();
                     final BlockPos newPos = pos.up();
-                    player.requestTeleport(position.x, newPos.getY(), position.z);
-                    player.damage(DamageSource.FALL, 3f);
-                    world.playSound(null, position.x, newPos.getY() + player.getStandingEyeHeight(), position.z,
-                            SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 0.5f, 1.122462f);
-                    world.spawnParticles(ParticleTypes.END_ROD, position.x, newPos.getY(), position.z, 10, 0, 0, 0, 0.25);
-                    return true;
+                    if(Config.INSTANCE.allowBlocked || !world.getBlockState(newPos).canSuffocate(world, newPos)){
+                        player.requestTeleport(position.x, newPos.getY(), position.z);
+                        if(Config.INSTANCE.teleportDamage > 0)
+                            player.damage(DamageSource.FALL, Config.INSTANCE.teleportDamage);
+                        world.playSound(null, position.x, newPos.getY() + player.getStandingEyeHeight(), position.z,
+                                SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 0.5f, 1.122462f);
+                        world.spawnParticles(ParticleTypes.END_ROD, position.x, newPos.getY(), position.z, 10, 0, 0, 0, 0.25);
+                        return true;
+                    }
                 }
             }
             pos = pos.up();
+            count++;
         }
         return false;
     }
 
     @Override
     public boolean onSneak(BlockPos pos, PlayerEntity player) {
+        if (!Config.INSTANCE.teleportWhileSprinting && player.isSprinting())
+            return false;
         pos = pos.down();
         ServerWorld world = (ServerWorld) player.world;
-        while(pos.getY() >= 0){
+        int count = 0;
+        while(count < Config.INSTANCE.maxRange && pos.getY() >= 0){
             Block b = world.getBlockState(pos).getBlock();
             if(b instanceof EndervatorBlock){
                 EndervatorBlock block = (EndervatorBlock)b;
-                if(block.materialColor == this.materialColor){
+                if(!Config.INSTANCE.sameColourOnly || block.materialColor == this.materialColor){
                     Vec3d position = player.getPos();
                     final BlockPos newPos = pos.up();
-                    player.requestTeleport(position.x, newPos.getY(), position.z);
-                    player.damage(DamageSource.FALL, 3f);
-                    world.playSound(null, position.x, newPos.getY() + player.getStandingEyeHeight(), position.z,
-                            SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 0.5f, 0.890899f);
-                    world.spawnParticles(ParticleTypes.END_ROD, position.x, newPos.getY(), position.z, 10, 0, 0, 0, 0.25);
-                    return true;
+                    if(Config.INSTANCE.allowBlocked || !world.getBlockState(newPos).canSuffocate(world, newPos)){
+                        player.requestTeleport(position.x, newPos.getY(), position.z);
+                        if(Config.INSTANCE.teleportDamage > 0)
+                            player.damage(DamageSource.FALL, Config.INSTANCE.teleportDamage);
+                        world.playSound(null, position.x, newPos.getY() + player.getStandingEyeHeight(), position.z,
+                                SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 0.5f, 0.890899f);
+                        world.spawnParticles(ParticleTypes.END_ROD, position.x, newPos.getY(), position.z, 10, 0, 0, 0, 0.25);
+                        return true;
+                    }
                 }
             }
             pos = pos.down();
+            count++;
         }
         return false;
     }
