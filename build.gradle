@@ -4,7 +4,9 @@ plugins {
 }
 
 repositories{
-	maven{ url "https://minecraft.curseforge.com/api/maven" }
+	// maven{ url "https://minecraft.curseforge.com/api/maven" }
+	// maven{ url "https://maven.extracraftx.com" }
+	mavenLocal()
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -25,7 +27,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "serveradditionsutil:ServerAdditionsUtil:${project.serveradditionsutil_version}"
+	modImplementation "com.extracraftx.minecraft:ServerAdditionsUtil:${project.serveradditionsutil_version}"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
