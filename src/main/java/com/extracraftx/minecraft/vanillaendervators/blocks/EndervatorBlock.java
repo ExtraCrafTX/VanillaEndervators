@@ -28,8 +28,11 @@ import net.minecraft.world.World;
 
 public class EndervatorBlock extends ServerSideBlock implements ActionListenerBlock {
 
-    public EndervatorBlock(Block rep, Identifier id) {
+    private String name;
+
+    public EndervatorBlock(Block rep, Identifier id, String name) {
         super(rep, id, FabricBlockSettings.copy(rep).build());
+        this.name = name;
     }
 
     public ServerSideBlockItem getNewBlockItem() {
@@ -131,7 +134,7 @@ public class EndervatorBlock extends ServerSideBlock implements ActionListenerBl
 
     class EndervatorBlockItem extends ServerSideBlockItem{
         public EndervatorBlockItem(){
-            super(EndervatorBlock.this, EndervatorBlock.this.getId(), new Item.Settings().group(ItemGroup.TRANSPORTATION));
+            super(EndervatorBlock.this, EndervatorBlock.this.getId(), new Item.Settings().group(ItemGroup.TRANSPORTATION), EndervatorBlock.this.name);
         }
 
         @Override

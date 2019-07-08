@@ -27,6 +27,6 @@
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*",
-    "serveradditionsutil": "*"
+    "serveradditionsutil": ">=0.2.0"
   }
 }

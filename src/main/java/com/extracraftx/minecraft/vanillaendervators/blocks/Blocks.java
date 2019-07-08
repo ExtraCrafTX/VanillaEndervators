@@ -12,10 +12,11 @@ public class Blocks {
     public static void registerBlocks() {
         for (int i = 0; i < colorNames.length; i++) {
             String name = colorNames[i];
+            String blockName = name + " Endervator";
             String codeName = name.toLowerCase().replaceAll(" ", "_");
             Identifier ident = new Identifier("vanillaendervators", codeName + "_endervator");
             endervators[i] = Registry.register(Registry.BLOCK, ident,
-                    new EndervatorBlock(Registry.BLOCK.get(new Identifier("minecraft", codeName + "_wool")), ident));
+                    new EndervatorBlock(Registry.BLOCK.get(new Identifier("minecraft", codeName + "_wool")), ident, blockName));
             Registry.register(Registry.ITEM, ident, endervators[i].getNewBlockItem());
         }
     }
