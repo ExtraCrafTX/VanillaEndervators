@@ -17,9 +17,9 @@ By default Endervators have no maximum range, do 1 heart of damage every time yo
 This can ALL be configured! The config file is called vanillaendervators_config.json and is in the config folder which should appear alongside your mods folder. When you run the mod, if a config file doesn't already exist, it will generate the default one which can then be edited to suit your needs. Here is the default config:
 ```json
 {
-  "teleportDamage": 2,
-  "maxRange": 256,
-  "sameColourOnly": true,
-  "teleportWhileSprinting": false
+    "teleportDamage": 2,
+    "maxRange": 256,
+    "sameColourOnly": true,
+    "teleportWhileSprinting": false
 }
 ```
