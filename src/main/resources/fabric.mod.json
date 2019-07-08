@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "vanillaendervators",
-  "version": "0.0.1",
+  "version": "1.0.0",
 
   "name": "VanillaEndervators",
   "description": "Adds server-side endervators that work with vanilla clients",
